@@ -12,14 +12,7 @@ import dyimagefx.*;
 
 public class ImageFX {
 
-    /////////////////////////// Pixel elements ARGB Methods ////////////////////
 
-    /**
-     * This method will return alpha value from the pixel value.
-     *
-     * @param pixelVal The pixel value from which alpha value is calculated.
-     * @return Alpha value [0-255].
-     */
 
 
     public static void main(String[] args){
