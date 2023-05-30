@@ -1,4 +1,4 @@
-package mypackage;
+package JpgPng;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
