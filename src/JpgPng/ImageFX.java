@@ -31,7 +31,7 @@ public class ImageFX {
         //       HSI_changeImageSaturation(iobj,0.366);
         //       blur_D16(iobj);
         //      blur_D9(iobj);
-//         contrast(iobj);
+         contrast(iobj);
         blueImage(iobj);
 
 
