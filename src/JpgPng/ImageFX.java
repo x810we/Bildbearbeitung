@@ -24,8 +24,8 @@ public class ImageFX {
         //       HSI_changeImageSaturation(iobj,0.366);
         //       blur_D16(iobj);
         //      blur_D9(iobj);
-         // contrast(iobj);
-        blueImage(iobj);
+          contrast(iobj);
+        //blueImage(iobj);
 
 
         iobj.writeImage("/Users/x810we/Pictures/Output-0.jpg");
