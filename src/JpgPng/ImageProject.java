@@ -28,7 +28,7 @@ public class ImageProject {
     public static void test(){
 
         dyimagefx.MyImage iobj = new dyimagefx.MyImage();
-        iobj.readImage("/Users/x810we/Pictures/IMG_2027.jpg");
+        iobj.readImage("/Users/x810we/Pictures/Output.png");
 
 
      //   MyImage iobj = new MyImage(7000,4000);
