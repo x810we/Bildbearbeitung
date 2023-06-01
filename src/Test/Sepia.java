@@ -31,7 +31,7 @@ public class Sepia{
 
         //read image
         try{
-            f = new File("/Users/x810we/Pictures/Output.png");
+            f = new File("/Users/x810we/Pictures/TestBild-T-020.png");
             img = ImageIO.read(f);
         }catch(IOException e){
             System.out.println(e);
