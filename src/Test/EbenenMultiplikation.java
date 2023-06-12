@@ -13,6 +13,7 @@ public class EbenenMultiplikation {
 
         //read image
         try{
+
             f = new File("/Users/x810we/Pictures/TestBild-T-100.png");
             img = ImageIO.read(f);
         }catch(IOException e){
