@@ -19,8 +19,8 @@ public class ImageFX {
         int minIntensity[] = new int[3];
 
         MyImage iobj = new MyImage();
-        iobj.readImage("/Users/x810we/Pictures/IMG_2027.jpg");
-       // iobj.readImage("/Users/x810we/Pictures/Poro.png");
+       // iobj.readImage("/Users/x810we/Pictures/IMG_2027.jpg");
+        iobj.readImage("/Users/x810we/Pictures/Output-0.jpg");
 
         //       HSI_changeImageSaturation(iobj,0.366);
         //       blur_D16(iobj);
@@ -35,7 +35,7 @@ public class ImageFX {
         negative(iobj);
 
 
-        iobj.writeImage("/Users/x810we/Pictures/Output-0.jpg");
+        iobj.writeImage("/Users/x810we/Pictures/Output-1.jpg");
     }
 
 

@@ -14,7 +14,7 @@ public class Intensity {
     /**
      * This will return the maximum intensity of the grayscale image img.
      *
-     * @param img The grayscale image.
+     * @param img2 The grayscale image.
      * @return maximum intensity.
      */
 
