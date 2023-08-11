@@ -22,6 +22,8 @@ public class RedImage{
         BufferedImage img = null;
         File f = null;
 
+
+
         //read image
         try{
             f = new File("/Users/x810we/Pictures/IMG_2027.jpg");

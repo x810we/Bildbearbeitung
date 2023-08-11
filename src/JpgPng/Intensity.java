@@ -28,7 +28,7 @@ public class Intensity {
         int maxRedScale1  = red_getMax(iobj);
         minIntensity      = color_getMin(iobj);
 
-        iobj.writeImage("/Users/x810we/Pictures/Output-0.png");
+        iobj.writeImage("/Users/x810we/Pictures/IMG_2027Output-0.jpg");
     }
 
 

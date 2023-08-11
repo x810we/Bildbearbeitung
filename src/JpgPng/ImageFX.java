@@ -20,12 +20,19 @@ public class ImageFX {
 
         MyImage iobj = new MyImage();
         iobj.readImage("/Users/x810we/Pictures/IMG_2027.jpg");
+       // iobj.readImage("/Users/x810we/Pictures/Poro.png");
 
         //       HSI_changeImageSaturation(iobj,0.366);
         //       blur_D16(iobj);
         //      blur_D9(iobj);
-        //  contrast(iobj);
-        blueImage(iobj);
+         // contrast(iobj);
+        //HSV_changeImageHue(iobj, 180);
+        //blueImage(iobj);
+        // rotateLeft(iobj);
+        //flipHorizontal(iobj);
+        //flipVertical(iobj);
+        //transparentAllPixels(iobj, 255);
+        negative(iobj);
 
 
         iobj.writeImage("/Users/x810we/Pictures/Output-0.jpg");
