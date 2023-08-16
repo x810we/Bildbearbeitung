@@ -2,6 +2,7 @@
   <library name="DYimageFX-1.0.140514">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/DYimageFX-1.0.140514.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/J-ExifTool-0.0.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

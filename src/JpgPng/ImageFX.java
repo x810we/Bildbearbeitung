@@ -19,23 +19,27 @@ public class ImageFX {
         int minIntensity[] = new int[3];
 
         MyImage iobj = new MyImage();
-       // iobj.readImage("/Users/x810we/Pictures/IMG_2027.jpg");
-        iobj.readImage("/Users/x810we/Pictures/Output-0.jpg");
+        iobj.readImage("/Users/x810we/Library/Mobile Documents/X6B29J8D22~com~savysoda~documents/Documents/Daten/04 Technik/91 Fotographie/13 Fotobücher/Bildbearbeitung/Fotos/Muster-Programmierung.png");
+        //iobj.readImage("/Users/x810we/Pictures/Output-0.jpg");
 
         //       HSI_changeImageSaturation(iobj,0.366);
         //       blur_D16(iobj);
         //      blur_D9(iobj);
          // contrast(iobj);
         //HSV_changeImageHue(iobj, 180);
-        //blueImage(iobj);
+        greenImage(iobj);
         // rotateLeft(iobj);
         //flipHorizontal(iobj);
         //flipVertical(iobj);
         //transparentAllPixels(iobj, 255);
-        negative(iobj);
+     //   transparentAlphaPixels(iobj, 0);//
+        //   transparentAllPixels(iobj, 0);
+     //   HSI_createHSIImage(iobj);
+      //  HSI_changeImageHue(iobj,128 );
+       // negative(iobj);
 
 
-        iobj.writeImage("/Users/x810we/Pictures/Output-1.jpg");
+        iobj.writeImage("/Users/x810we/Library/Mobile Documents/X6B29J8D22~com~savysoda~documents/Documents/Daten/04 Technik/91 Fotographie/13 Fotobücher/Bildbearbeitung/Fotos/Muster-Programmierung-Output.png");
     }
 
 
@@ -319,7 +323,41 @@ public class ImageFX {
     public static void transparentAllPixels(MyImage img, int alpha){
         for(int y = 0; y < img.getImageHeight(); y++){
             for(int x = 0; x < img.getImageWidth(); x++){
-                img.setAlpha(x, y, alpha);
+
+                int test = img.getAlpha(x, y);
+                int red = img.getRed(x, y);
+                int green = img.getGreen(x, y);
+                int blue = img.getBlue(x, y);
+
+                if (y < 200){
+                    img.setAlpha(x, y, 10 );
+                    img.setRed(x,y,red);
+                    img.setGreen(x,y,green);
+                    img.setBlue(x,y,blue);
+
+                   /* img.setRed(x, y, 0);
+                    img.setGreen(x, y, 0);
+                    img.setBlue(x, y, 0);*/
+                };
+                if (y >= 200 && y < 400) {
+                    img.setAlpha(x, y, 100);
+                    img.setRed(x, y, red);
+                    img.setGreen(x, y, green);
+                    img.setBlue(x, y, blue);
+                };
+                if (y >= 400 && y < 600) {
+                    img.setAlpha(x, y, 200);
+                    img.setRed(x, y, red);
+                    img.setGreen(x, y, green);
+                    img.setBlue(x, y, blue);
+                };
+                if (y >= 600 ) {
+                    img.setAlpha(x, y, 50);
+                    img.setRed(x, y, red);
+                    img.setGreen(x, y, green);
+                    img.setBlue(x, y, blue);
+                };
+
             }
         }
     }
