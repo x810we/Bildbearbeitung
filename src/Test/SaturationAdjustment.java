@@ -37,6 +37,7 @@ public class SaturationAdjustment {
                 }
             }
 
+            //
             // Speichere das bearbeitete Bild
             ImageIO.write(image, "jpg", new File(outputImagePath));
         } catch (IOException e) {
