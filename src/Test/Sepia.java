@@ -24,14 +24,14 @@ public class Sepia{
                 s1.substring(48, 56),s1.substring(56, 64));
     }
 
-    public static void main(String args[])throws IOException{
+    public static void main(String[] args)throws IOException{
         BufferedImage img = null;
         File f = null;
         long ipAddress = 3232235778L;
 
         //read image
         try{
-            f = new File("/Users/x810we/Pictures/TestBild-T-020.png");
+            f = new File("/Users/x810we/Pictures/IMG_3404.jpeg");
             img = ImageIO.read(f);
         }catch(IOException e){
             System.out.println(e);
@@ -108,7 +108,7 @@ public class Sepia{
         //write image
         try{
             f = new File("/Users/x810we/Pictures/Output.png");
-            ImageIO.write(img, "png", f);
+            ImageIO.write(img, "jpg", f);
         }catch(IOException e){
             System.out.println(e);
         }
