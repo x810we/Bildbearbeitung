@@ -19,9 +19,17 @@ public class MixedImage {
             System.out.println(e);
         }
 
+
         //get width and height
         int width = img.getWidth();
         int height = img.getHeight();
+
+        for (int y = 0; y< height; y++){
+            int p = img.getRGB(0, y);
+            int a = (p>>24)&0xff;
+            int b = p&0xff;
+
+        }
 
         //convert to blue image
         for(int y = 0; y < height; y++){

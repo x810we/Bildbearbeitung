@@ -55,6 +55,9 @@ public class RedImage{
         try{
             f = new File("/Users/x810we/Pictures/output.jpg");
             ImageIO.write(img, "jpg", f);
+
+            ImageIO.write(img, "jpg", new File("/Users/x810we/Pictures/output.jpg"));
+
         }catch(IOException e){
             System.out.println(e);
         }
