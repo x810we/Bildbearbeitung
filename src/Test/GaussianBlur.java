@@ -1,6 +1,5 @@
 package Test;
 
-import java.util.Objects;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -12,10 +11,27 @@ public class GaussianBlur {
 
     public static void main(String[] args) {
 
-        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(1500,Math.sqrt(1500));
+        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(50,Math.sqrt(50));
         GaussianBlur.getInstance().printWeightedMatrixToFile(weights);
-        System.out.println();
-    }
+
+        BufferedImage answer = null;
+        try {
+            //BufferedImage source_img = ImageIO.read(new File("/Users/x810we/Pictures/IMG_1477.jpeg"));
+           // answer = GaussianBlur.getInstance().createGaussianedImage(source_img, weights, 1500);
+           answer = GaussianBlur.getInstance().createGaussianImage(ImageIO.read(new File("/Users/x810we/Pictures/MA-Herren40-2.jpg")), weights, 50  );
+
+
+            //GaussianBlur.getInstance().createGaussianedImage(ImageIO.read(Class.class.getResourceAsStream("/Users/x810we/Pictures/IMG_1477.jpeg")), weights, 150);
+     }   catch (IOException e) {
+         e.printStackTrace();
+     }
+        try {
+            ImageIO.write(answer, "PNG", new File("/Users/x810we/Pictures/answer.png"));
+             } catch (IOException e) {
+            e.printStackTrace();
+        }
+         System.out.println("Done");
+     }
 
     private GaussianBlur() {
     }
@@ -29,32 +45,7 @@ public class GaussianBlur {
 
    }
 
-   public double[][] gaussianKernel(int size, double variance) {
-       double[][] kernel = new double[size][size];
-       double sumTotal = 0;
-       int kernelRadius = size / 2;
-       double distance = 0;
 
-       double calculatedEuler = 1.0 / (2.0 * Math.PI * Math.pow(variance, 2));
-
-       for (int filterY = -kernelRadius; filterY <= kernelRadius; filterY++) {
-           for (int filterX = -kernelRadius; filterX <= kernelRadius; filterX++) {
-               distance = ((filterX * filterX) + (filterY * filterY)) / (2 * (variance * variance));
-
-               kernel[filterY + kernelRadius][filterX + kernelRadius] = calculatedEuler * Math.exp(-distance);
-
-               sumTotal += kernel[filterY + kernelRadius][filterX + kernelRadius];
-           }
-       }
-
-       for (int y = 0; y < size; y++) {
-           for (int x = 0; x < size; x++) {
-               kernel[y][x] = kernel[y][x] * (1.0 / sumTotal);
-           }
-       }
-
-       return kernel;
-   }
 
     public double[][] generateweightMatrix(int radius, double variance) {
         double[][] weights = new double[radius][radius];
@@ -111,9 +102,64 @@ public class GaussianBlur {
 
 
 
-   public double gaussianModel(double x,double y,double variance) {
-    return (1 / (2 * Math.PI * Math.pow(variance, 2))
-            * Math. exp(-(Math.pow(x, 2) + Math.pow(y, 2)) / (2 * Math.pow(variance, 2))));
 
-}
-}
+    public BufferedImage createGaussianImage(BufferedImage source_image,double weights[][], int radius) {
+       System.out.println("Working...");
+       BufferedImage answer = new BufferedImage(source_image.getWidth(),source_image.getHeight(),BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < (source_image.getWidth() - radius); x++) {
+            for (int y = 0; y < (source_image.getHeight() - radius); y++) {
+                double[][] distributedColorRed = new double[radius][radius];
+                double[][] distributedColorGreen = new double[radius][radius];
+                double[][] distributedColorBlue = new double[radius][radius];
+
+                for (int weightX = 0; weightX < weights.length; weightX++) {
+                    for (int weightY = 0; weightY < weights[weightX].length; weightY++) {
+
+
+                            int sampleX = x + weightX - (weights.length / 2);
+                            int sampleY = y + weightY - (weights.length / 2);
+
+                            if( sampleX >= 0 && sampleY >= 0) {
+                                double currentWeight = weights[weightX][weightY];
+                                Color sampledColor = new Color(source_image.getRGB(sampleX, sampleY));
+
+                                distributedColorRed[weightX][weightY] = currentWeight * (double) sampledColor.getRed();
+                                distributedColorGreen[weightX][weightY] = currentWeight * (double) sampledColor.getGreen();
+                                distributedColorBlue[weightX][weightY] = currentWeight * (double) sampledColor.getBlue();
+                            }
+                        }
+
+                    //answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
+
+                }
+                if ( x<=source_image.getWidth() && y<= source_image.getHeight()) {
+                    answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
+                }
+                //answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
+                //answer.setRGB(x,y,new Color((int) Math.round(sum(distributedColorRed)),(int) Math.round(sum(distributedColorGreen)),(int) Math.round(sum(distributedColorBlue))).getRGB());
+            }
+           //answer.setRGB(x,y,rgb);
+            }
+
+            return answer;
+        }
+        //return source_image;
+
+    private int getwightedColorValue(double[][] weightedColor) {
+        double summation = 0;
+        for (int i = 0; i < weightedColor. length; i++) {
+            for (int j = 0; j < weightedColor[i].length; j++) {
+                summation += weightedColor[i][j];
+            }
+        }
+        return (int) summation;
+    }
+
+
+
+        public double gaussianModel ( double x, double y, double variance){
+            return (1 / (2 * Math.PI * Math.pow(variance, 2))
+                    * Math.exp(-(Math.pow(x, 2) + Math.pow(y, 2)) / (2 * Math.pow(variance, 2))));
+
+        }
+    }
