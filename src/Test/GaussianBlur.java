@@ -11,14 +11,14 @@ public class GaussianBlur {
 
     public static void main(String[] args) {
 
-        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(50,Math.sqrt(50));
+        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(5,Math.sqrt(5));
         GaussianBlur.getInstance().printWeightedMatrixToFile(weights);
 
         BufferedImage answer = null;
         try {
             //BufferedImage source_img = ImageIO.read(new File("/Users/x810we/Pictures/IMG_1477.jpeg"));
            // answer = GaussianBlur.getInstance().createGaussianedImage(source_img, weights, 1500);
-           answer = GaussianBlur.getInstance().createGaussianImage(ImageIO.read(new File("/Users/x810we/Pictures/MA-Herren40-2.jpg")), weights, 50  );
+           answer = GaussianBlur.getInstance().createGaussianImage(ImageIO.read(new File("/Users/x810we/Pictures/MA-Herren40-2.jpg")), weights, 5 );
 
 
             //GaussianBlur.getInstance().createGaussianedImage(ImageIO.read(Class.class.getResourceAsStream("/Users/x810we/Pictures/IMG_1477.jpeg")), weights, 150);
@@ -59,7 +59,7 @@ public class GaussianBlur {
             System.out.println();
         }
             System.out.println("---------");
-            for (int i = 0; i < weights. length; i++) {
+            for (int i = 0; i < weights.length; i++) {
                 for (int j = 0; j < weights[i].length; j++) {
                     weights[i][j] /= summation;
                 }
@@ -142,6 +142,7 @@ public class GaussianBlur {
             }
 
             return answer;
+
         }
         //return source_image;
 
