@@ -84,7 +84,7 @@ public class Aufhellen{
 
         //write image
         try{
-            f = new File("/Users/x810we/Pictures/TestBild111-c.png");
+            f = new File("/Users/x810we/Pictures/TestBild111-d.png");
             ImageIO.write(img, "png", f);
         }catch(IOException e){
             System.out.println(e);
