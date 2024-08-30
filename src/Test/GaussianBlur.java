@@ -8,17 +8,17 @@ import java.awt.Color;
 
 
 public class GaussianBlur {
-
+    public static GaussianBlur blur;
     public static void main(String[] args) {
 
-        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(5,Math.sqrt(5));
-        GaussianBlur.getInstance().printWeightedMatrixToFile(weights);
+        double[][] weights = GaussianBlur.getInstance().generateweightMatrix(6,Math.sqrt(6));
+        blur.printWeightedMatrixToFile(weights);
 
         BufferedImage answer = null;
         try {
             //BufferedImage source_img = ImageIO.read(new File("/Users/x810we/Pictures/IMG_1477.jpeg"));
            // answer = GaussianBlur.getInstance().createGaussianedImage(source_img, weights, 1500);
-           answer = GaussianBlur.getInstance().createGaussianImage(ImageIO.read(new File("/Users/x810we/Pictures/MA-Herren40-2.jpg")), weights, 5 );
+           answer = blur.createGaussianImage(ImageIO.read(new File("/Users/x810we/Pictures/MA-Herren40-2.jpg")), weights, 6 );
 
 
             //GaussianBlur.getInstance().createGaussianedImage(ImageIO.read(Class.class.getResourceAsStream("/Users/x810we/Pictures/IMG_1477.jpeg")), weights, 150);
@@ -33,10 +33,11 @@ public class GaussianBlur {
          System.out.println("Done");
      }
 
-    private GaussianBlur() {
+    public GaussianBlur() {
+
     }
 
-    private static GaussianBlur blur;
+//     public static GaussianBlur blur;
 
    public static GaussianBlur getInstance() {
         if (blur == null)
@@ -62,7 +63,9 @@ public class GaussianBlur {
             for (int i = 0; i < weights.length; i++) {
                 for (int j = 0; j < weights[i].length; j++) {
                     weights[i][j] /= summation;
+                    System.out.print(weights[i][j] + " ");
                 }
+                System.out.println();
             }
 
         System.out.println(summation);
@@ -128,15 +131,13 @@ public class GaussianBlur {
                                 distributedColorBlue[weightX][weightY] = currentWeight * (double) sampledColor.getBlue();
                             }
                         }
-
-                    //answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
-
                 }
                 if ( x<=source_image.getWidth() && y<= source_image.getHeight()) {
                     answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
+                    if (x == 290 && y == 208) {
+                        System.out.println("Done:" + getwightedColorValue(distributedColorRed)+"  " + getwightedColorValue(distributedColorGreen) + "  " + getwightedColorValue(distributedColorBlue));
+                    }
                 }
-                //answer.setRGB(x, y, new Color(getwightedColorValue(distributedColorRed), getwightedColorValue(distributedColorGreen), getwightedColorValue(distributedColorBlue)).getRGB());
-                //answer.setRGB(x,y,new Color((int) Math.round(sum(distributedColorRed)),(int) Math.round(sum(distributedColorGreen)),(int) Math.round(sum(distributedColorBlue))).getRGB());
             }
            //answer.setRGB(x,y,rgb);
             }
@@ -146,9 +147,9 @@ public class GaussianBlur {
         }
         //return source_image;
 
-    private int getwightedColorValue(double[][] weightedColor) {
+    public int getwightedColorValue(double[][] weightedColor) {
         double summation = 0;
-        for (int i = 0; i < weightedColor. length; i++) {
+        for (int i = 0; i < weightedColor.length; i++) {
             for (int j = 0; j < weightedColor[i].length; j++) {
                 summation += weightedColor[i][j];
             }

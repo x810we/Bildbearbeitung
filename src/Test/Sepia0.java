@@ -17,8 +17,7 @@ public class Sepia0 {
 
         // read image
         try {
-            f = new File(
-                    "/Users/810we/Pictures/IMG_3404.jpeg");
+            f = new File("/Users/x810we/Pictures/IMG_0016.jpeg");
             img = ImageIO.read(f);
         }
         catch (IOException e) {
@@ -77,8 +76,7 @@ public class Sepia0 {
 
         // write image
         try {
-            f = new File(
-                    "/Users/810we/Pictures/OutPut.jpeg");
+            f = new File("/Users/x810we/Pictures/Output.png");
             ImageIO.write(img, "jpg", f);
         }
         catch (IOException e) {
