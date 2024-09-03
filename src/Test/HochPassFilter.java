@@ -20,7 +20,7 @@ public class HochPassFilter {
             g.drawImage(originalImage, 0, 0, null);
             g.dispose();
 
-            // Bild für Hochpassfilter erstellen
+            // Bild für Hochpassfilter erstellen i
             BufferedImage highPassImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
             // Hochpassfilter anwenden
