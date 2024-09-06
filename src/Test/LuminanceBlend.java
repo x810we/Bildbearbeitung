@@ -14,6 +14,10 @@ public class LuminanceBlend {
             // Originalbild laden
             BufferedImage originalImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/FarbchartEbenenmodi.png"));
             BufferedImage originalImage2 = ImageIO.read(new File("/Users/x810we/Pictures/FB/Grauchart.png"));
+
+            //BufferedImage originalImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/Grauchart.png"));
+            //BufferedImage originalImage2 = ImageIO.read(new File("/Users/x810we/Pictures/FB/FarbchartEbenenmodi.png"));
+
             int width = originalImage.getWidth();
             int height = originalImage.getHeight();
 

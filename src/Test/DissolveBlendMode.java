@@ -43,11 +43,10 @@ public class DissolveBlendMode {
                         outputColor = new Color(colorB.getRed(), colorB.getGreen(), colorB.getBlue(), colorB.getAlpha());
                     }
 
-
                     if (x == 3 && y == 5) {  // Beispiel: Rotes Pixel an Position (3,5)
                         //colorA = new Color(colorA.getRed(), colorA.getGreen(), colorA.getBlue(), 128);  // Setzt Alpha auf 128
                         outputColor = new Color(255, 0, 0, 128);
-                    }
+                   }
                     // Ergebnisfarbe ins Ausgabe-Bild setzen
                     outputImage.setRGB(x, y, outputColor.getRGB());
                 }
