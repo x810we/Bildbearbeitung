@@ -1,5 +1,4 @@
 package Test;
-
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,24 +17,28 @@ public class LinearBurnBlendMode {
             // Neues Bild für das Ergebnis erstellen
             BufferedImage outputImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-            // Linear belichten-Mischmodus auf jedes Pixel anwenden
+            // Linear Abwedeln-Mischmodus auf jedes Pixel anwenden
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
                     // Pixel von Bild A und Bild B abrufen
                     Color colorA = new Color(imageA.getRGB(x, y), true);
                     Color colorB = new Color(imageB.getRGB(x, y), true);
 
-                    // Linear belichten-Blending
-                    int red = colorA.getRed() + colorB.getRed() - 255;
-                    int green = colorA.getGreen() + colorB.getGreen() - 255;
-                    int blue = colorA.getBlue() + colorB.getBlue() - 255;
+                    // RGB-Kanäle von 0-255 in den Bereich 0-1 normalisieren
+                    double rA = colorA.getRed() / 255.0;
+                    double gA = colorA.getGreen() / 255.0;
+                    double bA = colorA.getBlue() / 255.0;
 
-                    // Begrenzen auf gültige Farbwerte (0 - 255)
-                    red = Math.max(0, Math.min(255, red));
-                    green = Math.max(0, Math.min(255, green));
-                    blue = Math.max(0, Math.min(255, blue));
+                    double rB = colorB.getRed() / 255.0;
+                    double gB = colorB.getGreen() / 255.0;
+                    double bB = colorB.getBlue() / 255.0;
 
-                    // Alpha beibehalten (hier von Bild A, kann angepasst werden)
+                    // Linear Abwedeln-Blending
+                    int red = (int) Math.max(0, (rB + rA - 1) * 255);
+                    int green = (int) Math.max(0, (gB + gA - 1) * 255);
+                    int blue = (int) Math.max(0, (bB + bA - 1) * 255);
+
+                    // Alpha-Wert beibehalten
                     int alpha = colorA.getAlpha();
 
                     // Ergebnisfarbe ins Ausgabe-Bild setzen

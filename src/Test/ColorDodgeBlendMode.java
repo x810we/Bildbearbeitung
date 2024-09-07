@@ -1,10 +1,11 @@
 package Test;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-public class ColorBurnBlendMode {
+public class ColorDodgeBlendMode {
     public static void main(String[] args) {
         try {
             // Zwei Bilder laden
@@ -17,7 +18,7 @@ public class ColorBurnBlendMode {
             // Neues Bild für das Ergebnis erstellen
             BufferedImage outputImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-            // Farbig Abwedeln-Mischmodus auf jedes Pixel anwenden
+            // Negativ Multiplizieren-Mischmodus auf jedes Pixel anwenden
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
                     // Pixel von Bild A und Bild B abrufen
@@ -33,10 +34,10 @@ public class ColorBurnBlendMode {
                     double gB = colorB.getGreen() / 255.0;
                     double bB = colorB.getBlue() / 255.0;
 
-                    // Farbig Abwedeln-Blending (Color Burn)
-                    int red = (int) (255 * (1 - Math.min(1, (1 - rB) / rA)));
-                    int green = (int) (255 * (1 - Math.min(1, (1 - gB) / gA)));
-                    int blue = (int) (255 * (1 - Math.min(1, (1 - bB) / bA)));
+                    // Negativ Multiplizieren-Blending (Color Dodge)
+                    int red = (int) Math.min(255, rB / (1.0 - rA) * 255);
+                    int green = (int) Math.min(255, gB / (1.0 - gA) * 255);
+                    int blue = (int) Math.min(255, bB / (1.0 - bA) * 255);
 
                     // Alpha-Wert beibehalten
                     int alpha = colorA.getAlpha();
@@ -48,7 +49,7 @@ public class ColorBurnBlendMode {
             }
 
             // Ergebnis speichern
-            ImageIO.write(outputImage, "png", new File("/Users/x810we/Pictures/FB/output_color_burn_blend.png"));
+            ImageIO.write(outputImage, "png", new File("/Users/x810we/Pictures/FB/output_color_dodge_blend.png"));
 
         } catch (Exception e) {
             e.printStackTrace();
