@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cycling">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../cycling.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
