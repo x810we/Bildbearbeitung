@@ -17,7 +17,7 @@ public class TiffMetdataTMySQL {
 
         // Verbindung zur MySQL-Datenbank herstellen
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/Bild", "root", "soswind22");
+                "jdbc:mysql://localhost:3306/Bild", "x810we", "soswind22");
 
         // TIFF-Datei einlesen ttt
         ImageInputStream inputStream = ImageIO.createImageInputStream(tiffFile);
