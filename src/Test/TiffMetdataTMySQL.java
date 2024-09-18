@@ -19,7 +19,7 @@ public class TiffMetdataTMySQL {
         Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Bild", "root", "soswind22");
 
-        // TIFF-Datei einlesen
+        // TIFF-Datei einlesen ttt
         ImageInputStream inputStream = ImageIO.createImageInputStream(tiffFile);
         Iterator<ImageReader> readers = ImageIO.getImageReaders(inputStream);
         if (!readers.hasNext()) {
