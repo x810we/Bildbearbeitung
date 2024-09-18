@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class TiffMetdataTMySQL {
 
     public static void main(String[] args) throws Exception {
-        File tiffFile = new File("/Users/x810we/Pictures/FB/Portrait16.tif");
+        File tiffFile = new File("/Users/x810we/Pictures/IMG_1903.tiff");
 
         // Verbindung zur MySQL-Datenbank herstellen
         Connection connection = DriverManager.getConnection(
@@ -27,7 +27,7 @@ public class TiffMetdataTMySQL {
         }
 
         ImageReader reader = readers.next();
-        reader.setInput(inputStream, true);
+        reader.setInput(inputStream, false);
 
         // Durchlaufe alle Bilder im TIFF-Bild (für Mehrseitige TIFF-Dateien)
         for (int i = 0; i < reader.getNumImages(true); i++) {
