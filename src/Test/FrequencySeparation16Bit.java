@@ -12,7 +12,9 @@ public class FrequencySeparation16Bit {
         public static BufferedImage applyGaussianBlur(BufferedImage image, int radius) {
             int width = image.getWidth();
             int height = image.getHeight();
-            BufferedImage blurredImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            BufferedImage blurredImage = new BufferedImage(width, height, BufferedImage.TYPE_USHORT_565_RGB);
+            System.out.println("Data type: " + blurredImage.getSampleModel().getDataType());
+            System.out.println("Data type: " + blurredImage.getSampleModel().getNumDataElements());
 
             // Erzeuge den Gauß-Kernel
             double[][] kernel = createGaussianKernel(radius);
@@ -118,6 +120,7 @@ public class FrequencySeparation16Bit {
         int width = original.getWidth();
         int height = original.getHeight();
         BufferedImage highFrequencyImage = new BufferedImage(width, height, BufferedImage.TYPE_USHORT_555_RGB);
+        System.out.println("Data type: " + highFrequencyImage.getSampleModel().getDataType());
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
