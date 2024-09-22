@@ -24,7 +24,7 @@ public class Abdunkeln{
 
         //read image
         try{
-            f = new File("/Users/x810we/Pictures/FB/FarbchartEbenenmodi.png");
+            f = new File("/Users/x810we/Pictures/FB/Farbchart.png");
             img = ImageIO.read(f);
         }catch(IOException e){
             System.out.println(e);

@@ -10,7 +10,7 @@ public class HochPassFilter {
     public static void main(String[] args) {
         try {
             // Bild laden
-            BufferedImage originalImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/FarbchartEbenenmodi.png"));
+            BufferedImage originalImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/Portrait.png"));
             int width = originalImage.getWidth();
             int height = originalImage.getHeight();
 
@@ -24,7 +24,7 @@ public class HochPassFilter {
             BufferedImage highPassImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
             // Hochpassfilter anwenden
-            int radius = 300; // Radius von 10 Pixeln
+            int radius = 10; // Radius von 10 Pixeln
 
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {

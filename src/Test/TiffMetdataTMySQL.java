@@ -13,8 +13,8 @@ import java.util.Iterator;
 public class TiffMetdataTMySQL {
 
     public static void main(String[] args) throws Exception {
-        File tiffFile = new File("/Users/x810we/Pictures/IMG_1903.tiff");
-
+      //  File tiffFile = new File("/Users/x810we/Pictures/IMG_1903.tiff");
+        File tiffFile = new File("/Users/x810we/Pictures/FB/Farbchart.png");
         // Verbindung zur MySQL-Datenbank herstellen
         Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Bild", "x810we", "soswind22");

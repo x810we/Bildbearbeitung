@@ -61,27 +61,9 @@ public class FrequencySeparation {
                 Color blurredColor = new Color(lowFreqImage.getRGB(x, y));
 
                 // Hohe Frequenzen = Original - Weichgezeichnet
-            //    int r = Math.min(255, Math.max(0, originalColor.getRed() - blurredColor.getRed() + 128));
-            //    int g = Math.min(255, Math.max(0, originalColor.getGreen() - blurredColor.getGreen() + 128));
-            //    int b = Math.min(255, Math.max(0, originalColor.getBlue() - blurredColor.getBlue() + 128));
-
-            // Addition und Division durch 2
-                    int r = Math.min(255, Math.max(0, (originalColor.getRed()  +   blurredColor.getRed()) / 2) );
-                    int g = Math.min(255, Math.max(0, (originalColor.getGreen() + blurredColor.getGreen()) / 2) );
-                    int b = Math.min(255, Math.max(0, (originalColor.getBlue()  +  blurredColor.getBlue()) / 2 ) );
-
-                    r = ((r + g + b) / 3) - 128;
-                    g = r;
-                    b = r;
-
-                    if (r < 0) { r = 0;} else if (r > 255) { r = 255;};
-                    if (g < 0) { g = 0;} else if (g > 255) { g = 255;};
-                    if (b < 0) { b = 0;} else if (b > 255) { b = 255;};
-
-            // Onhe 50 % Grau
-            //    int r = Math.min(255, Math.max(0, originalColor.getRed() - blurredColor.getRed()));
-            //    int g = Math.min(255, Math.max(0, originalColor.getGreen() - blurredColor.getGreen()));
-            //    int b = Math.min(255, Math.max(0, originalColor.getBlue() - blurredColor.getBlue()));
+                int r = Math.min(255, Math.max(0, originalColor.getRed() - blurredColor.getRed() + 128));
+                int g = Math.min(255, Math.max(0, originalColor.getGreen() - blurredColor.getGreen() + 128));
+                int b = Math.min(255, Math.max(0, originalColor.getBlue() - blurredColor.getBlue() + 128));
 
                 Color highFreqColor = new Color(r, g, b);
                 highFreqImage.setRGB(x, y, highFreqColor.getRGB());
@@ -90,10 +72,10 @@ public class FrequencySeparation {
 
         try {
             // Speichere das Low-Frequency-Bild (Farbe)
-            ImageIO.write(lowFreqImage, "png", new File(lowFreqPath));
+            ImageIO.write(lowFreqImage, "png", new File("/Users/x810we/Pictures/FB/lowPortrait.jpg"));
 
             // Speichere das High-Frequency-Bild (Struktur)
-            ImageIO.write(highFreqImage, "png", new File(highFreqPath));
+            ImageIO.write(highFreqImage, "png", new File("/Users/x810we/Pictures/FB/highPortrait.jpg"));
 
             System.out.println("Frequenztrennung abgeschlossen. Dateien gespeichert.");
         } catch (Exception e) {
@@ -104,14 +86,14 @@ public class FrequencySeparation {
     public static void main(String[] args) {
         try {
             // Lade das Eingangsbild (Porträt)
-            BufferedImage inputImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/Portrait.png"));
+            BufferedImage inputImage = ImageIO.read(new File("/Users/x810we/Pictures/FB/Portrait.jpg"));
 
             // Setze den Radius für den Weichzeichner
             int blurRadius = 5;  // Passe diesen Wert für deine Bedürfnisse an
 
             // Pfade für die Ausgabebilder
-            String lowFreqPath = "/Users/x810we/Pictures/FB/low_frequency_image.png";
-            String highFreqPath = "/Users/x810we/Pictures/FB/high_frequency_image.png";
+            String lowFreqPath = "/Users/x810we/Pictures/FB/low_frequency_image.jpg";
+            String highFreqPath = "/Users/x810we/Pictures/FB/high_frequency_image.jpg";
 
             // Führe die Frequenztrennung aus
             frequencySeparation(inputImage, blurRadius, lowFreqPath, highFreqPath);
