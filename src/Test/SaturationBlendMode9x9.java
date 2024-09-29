@@ -85,5 +85,6 @@ public class SaturationBlendMode9x9 {
                 {new Color(0, 0, 0), new Color(38, 38, 38), new Color(77, 77, 77), new Color(102, 102, 102), new Color(128, 128, 128), new Color(166, 166, 166), new Color(204, 204, 204), new Color(230, 230, 230), new Color(255, 255, 255)},
                 {new Color(0, 0, 0), new Color(38, 38, 38), new Color(77, 77, 77), new Color(102, 102, 102), new Color(128, 128, 128), new Color(166, 166, 166), new Color(204, 204, 204), new Color(230, 230, 230), new Color(255, 255, 255)},
         };
+        applySaturationModeTo9x9(baseImage,blendImage);
     }
 }

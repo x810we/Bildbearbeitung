@@ -22,6 +22,7 @@ public class ImageCalculationDialog extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(7, 2));
+        setIconImage("/Users/x810we/Pictures/FB/Grauchart.png");
 
         // Labels
         add(new JLabel("Red:"));
@@ -78,8 +79,13 @@ public class ImageCalculationDialog extends JFrame {
         setVisible(true);
     }
 
+    private void setIconImage(String s) {
+    }
+
     public static void main(String[] args) {
+
         new ImageCalculationDialog();
+        System.out.println("Programm beendet");
     }
 }
 
