@@ -9,21 +9,19 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="KotlinJavaRuntime" level="project" />
-    <orderEntry type="library" exported="" name="DYimageFX-1.0.140514" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../mysql-connector-java-5.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../MYSQL/MySql.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="mysql-connector-java-5.0" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../mysql-connector-j-9.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/DYimageFX-1.0.140514.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

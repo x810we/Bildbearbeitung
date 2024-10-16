@@ -24,7 +24,7 @@ public class insertHaushalt {
 
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/HausHalt", "x810we", "soswind22");
+                "jdbc:mysql://localhost:3306/HausHalt", "root", "soswind22");
 
         String insertQuery = "INSERT INTO Medien (idMedien,Datum,ZStand) VALUES (?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
