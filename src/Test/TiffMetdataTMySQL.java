@@ -26,7 +26,20 @@ public class TiffMetdataTMySQL {
 
     public static void main(String[] args) throws Exception {
       //  File tiffFile = new File("/Users/x810we/Pictures/IMG_1903.tiff");
-        File tiffFile = new File("/Users/x810we/Pictures/FB/Farbchart.tif");
+        System.out.println("Usage: java MyJavaProgram: " + args[0]);
+/*
+        if (args.length != 1) {
+            System.out.println("Usage: java MyJavaProgram <jpg-file-path>");
+            return;
+        }
+*/
+        String jpgFilePath = args[0];
+        //String jpgFilePath = "/Users/x810we/Pictures/Collage1.jpg";           //test
+        // Add your logic here to process the jpg file and write metadata to MySQL
+        System.out.println("Processing file: " + jpgFilePath);
+        File tiffFile = new File(jpgFilePath);
+
+     //   File tiffFile = new File("/Users/x810we/Pictures/FB/Farbchart.tif");
         // Verbindung zur MySQL-Datenbank herstellen
         Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Bild", "x810we", "soswind22");
@@ -41,6 +54,23 @@ public class TiffMetdataTMySQL {
         ImageReader reader = readers.next();
         reader.setInput(inputStream, false);
 
+        // Tablellenname einfügen
+        int nextImageIndex = getNextImageIndex(connection);
+
+        GregorianCalendar now = new GregorianCalendar();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.LONG);
+        String tagValue2 = "2024-09-25 10:00:00.000000000";
+        tagValue2 = printSimpleDateFormat();
+        String insertQueryTable = "INSERT INTO tiff_tables (image_index, picture_name, created_at) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(insertQueryTable)) {
+            pstmt.setInt(1, nextImageIndex);
+            pstmt.setString(2, jpgFilePath);
+            pstmt.setTimestamp(3, Timestamp.valueOf(tagValue2));
+            pstmt.executeUpdate();
+        }
+
+
         // Durchlaufe alle Bilder im TIFF-Bild (für Mehrseitige TIFF-Dateien)
         for (int i = 0; i < reader.getNumImages(true); i++) {
             System.out.println("Metadaten für Bildindex " + i + ":");
@@ -50,7 +80,8 @@ public class TiffMetdataTMySQL {
             for (String formatName : metadataFormatNames) {
                 Node metadataTree = metadata.getAsTree(formatName);
                 if (metadataTree != null) {
-                    saveMetadataToDatabase(metadataTree, connection, i);
+                    //saveMetadataToDatabase(metadataTree, connection, i);
+                    saveMetadataToDatabase(metadataTree, connection,nextImageIndex);
                 }
             }
         }
@@ -84,7 +115,7 @@ public class TiffMetdataTMySQL {
 
 
                 // Metadaten in die Datenbank einfügen
-                String insertQuery = "INSERT INTO tiff_metadata (image_index, tag_name, tag_value, insert_time) VALUES (?, ?, ?, ?)";
+                String insertQuery = "INSERT INTO tiff_metadata (image_index, tag_name, tag_value, created_at) VALUES (?, ?, ?, ?)";
                 try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
                     pstmt.setInt(1, imageIndex);
                     pstmt.setString(2, tagName);
@@ -101,5 +132,22 @@ public class TiffMetdataTMySQL {
             saveMetadataToDatabase(child, connection, imageIndex);
             child = child.getNextSibling();
         }
+    }
+
+    public static int getNextImageIndex(Connection connection) throws SQLException {
+        String query = "SELECT MAX(image_index) FROM tiff_metadata";
+        int maxIndex = 0;
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if a result was returned
+            if (resultSet.next()) {
+                maxIndex = resultSet.getInt(1); // Get the max(image_index)
+            }
+        }
+
+        // Increase maxIndex by 1 for the new image_index
+        return maxIndex + 1;
     }
 }
