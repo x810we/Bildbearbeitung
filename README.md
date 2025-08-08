@@ -38,6 +38,10 @@ Dieses Projekt ist eine Java-Anwendung zur Bildbearbeitung. Es bietet verschiede
 - [`TiffMetdataTMySQL`](src/Test/TiffMetdataTMySQL.java ): Speichert TIFF-Metadaten in einer MySQL-Datenbank.
 - [`WhiteBalance2`](src/Test/WhiteBalance2.java ): Weißabgleich von Bildern.
 
+Alle Programme 
+
+
+
 ## Abhängigkeiten
 
 - [`dyimagefx`](src/JpgPng/CornerPoints.java ): Eine externe Bibliothek für Bildverarbeitungsfunktionen.
@@ -54,3 +58,5 @@ Yusuf Shakeel
 ## Weitere Informationen
 
 Weitere Informationen und Beispiele finden Sie auf der [GitHub-Seite des Projekts](https://www.github.com/yusufshakeel/Java-Image-Processing-Project).
+
+## Sonstiges

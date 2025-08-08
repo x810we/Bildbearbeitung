@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/ImageBlenderGUI_Doku.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/ImageBlenderGUI_Doku.md" />
+              <option name="updatedContent" value="# Dokumentation: ImageBlenderGUI&#10;&#10;## Übersicht&#10;&#10;Die Klasse `ImageBlenderGUI` stellt eine grafische Benutzeroberfläche (GUI) bereit, mit der zwei Bilder geladen, überblendet und das Ergebnis gespeichert werden kann.&#10;&#10;## Hauptfunktionen&#10;&#10;- **Bild 1 laden:** Öffnet einen Dialog zum Laden des ersten Bildes.&#10;- **Bild 2 laden:** Öffnet einen Dialog zum Laden des zweiten Bildes.&#10;- **Opacity-Slider:** Ermöglicht die Einstellung des Überblendungsgrades zwischen den beiden Bildern.&#10;- **Bilder mischen:** Überblendet die beiden geladenen Bilder entsprechend dem eingestellten Opacity-Wert.&#10;- **Bild speichern:** Speichert das gemischte Bild als PNG-Datei.&#10;&#10;## Bedienung&#10;&#10;1. Klicke auf „Bild 1 laden“ und wähle ein Bild aus.&#10;2. Klicke auf „Bild 2 laden“ und wähle ein weiteres Bild aus.&#10;3. Stelle mit dem Slider die gewünschte Überblendung ein.&#10;4. Klicke auf „Bilder mischen“, um das Ergebnis anzuzeigen.&#10;5. Klicke auf „Bild speichern“, um das gemischte Bild zu speichern.&#10;&#10;## Technische Hinweise&#10;&#10;- Unterstützte Bildformate: PNG, JPG, JPEG&#10;- Die Bilder werden auf die kleinste gemeinsame Größe zugeschnitten.&#10;- Die Überblendung erfolgt pixelweise unter Berücksichtigung des Alpha-Kanals.&#10;&#10;## Autor&#10;&#10;*Automatisch generiert*&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
