@@ -19,16 +19,16 @@ public class CreatePsdWithMask {
             // 3. Füge die Bildebene hinzu
             Layer imageLayer = new Layer();
             imageLayer.setName("Stretched Image");
-            imageLayer.setBounds(0, 0, stretched.getWidth(), stretched.getHeight());
+            //imageLayer.setBounds(0, 0, stretched.getWidth(), stretched.getHeight());
             psd.addLayer(imageLayer);
-            imageLayer.savePixels(stretched);
+            //imageLayer.savePixels(stretched);
 
             // 4. Füge die Maske als zusätzliche Raster-Layer oder Maskenebene hinzu
             Layer maskLayer = new Layer();
             maskLayer.setName("Alpha Mask");
-            maskLayer.setBounds(0, 0, mask.getWidth(), mask.getHeight());
+            //maskLayer.setBounds(0, 0, mask.getWidth(), mask.getHeight());
             psd.addLayer(maskLayer);
-            maskLayer.savePixels(mask);
+            //maskLayer.savePixels(mask);
 
             // 5. Speichere das PSD mit den Standardoptionen
             PsdOptions options = new PsdOptions();
