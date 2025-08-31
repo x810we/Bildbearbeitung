@@ -9,10 +9,10 @@ public class SeamCarvingWithMask {
     static final double HIGH_ENERGY = 1e6;
 
     public static void main(String[] args) throws Exception {
-        BufferedImage img = ImageIO.read(new File("input.png"));
-        BufferedImage mask = ImageIO.read(new File("mask.png")); // weiß = Schutzbereich
+        BufferedImage img = ImageIO.read(new File("/Users/x810we/Pictures/2025_08_Collage/IMG_0125.png"));
+        BufferedImage mask = ImageIO.read(new File("/Users/x810we/Pictures/2025_08_Collage/IMG_0125-maske.png")); // weiß = Schutzbereich
 
-        int newHeight = (int)(img.getHeight() * 1.2); // +20 %
+        int newHeight = (int)(img.getHeight() * 0.2); // +20 %
         while (img.getHeight() < newHeight) {
             double[][] energy = computeEnergy(img);
             applyMaskEnergy(energy, mask);
@@ -20,8 +20,8 @@ public class SeamCarvingWithMask {
             img = insertHorizontalSeam(img, seam);
             mask = insertHorizontalSeam(mask, seam);
         }
-        ImageIO.write(img, "png", new File("stretched.png"));
-        ImageIO.write(mask, "png", new File("mask_out.png"));
+        ImageIO.write(img, "png", new File("/Users/x810we/Pictures/2025_08_Collage/IMG_0125-stretched.png"));
+        ImageIO.write(mask, "png", new File("/Users/x810we/Pictures/2025_08_Collage/IMG_0125-mask_out.png"));
     }
 
     static double[][] computeEnergy(BufferedImage img) {
