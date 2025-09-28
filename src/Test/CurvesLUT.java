@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class CurvesLUT {
     public static void main(String[] args) throws IOException {
-        BufferedImage src = ImageIO.read(new File("/Users/x810we/Pictures/2025_08_Collage/PhotoshopMasken/Photoshop-MaskenGrau.png"));
         BufferedImage dst = new BufferedImage(src.getWidth(), src.getHeight(), src.getType());
 
         // Beispiel-S-Kurve definieren
@@ -31,7 +30,6 @@ public class CurvesLUT {
             }
         }
 
-        ImageIO.write(dst, "png", new File("/Users/x810we/Pictures/2025_08_Collage/PhotoshopMasken/output_curved.png"));
         System.out.println("Kurve angewandt – Datei: output_curved.png");
     }
 
