@@ -9,6 +9,7 @@
       <element id="file-copy" path="$USER_HOME$/Downloads/aspose-psd-25.5-jdk16.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/mysql-connector-j-9.0.0.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/DYimageFX-1.0.140514.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/xmpcore-6.1.11.jar" />
     </root>
   </artifact>
 </component>

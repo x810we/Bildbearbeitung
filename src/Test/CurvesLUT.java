@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class CurvesLUT {
     public static void main(String[] args) throws IOException {
+        BufferedImage src = ImageIO.read(new File("input.png"));
         BufferedImage dst = new BufferedImage(src.getWidth(), src.getHeight(), src.getType());
 
         // Beispiel-S-Kurve definieren
@@ -30,6 +31,7 @@ public class CurvesLUT {
             }
         }
 
+        ImageIO.write(dst, "png", new File("output_curved.png"));
         System.out.println("Kurve angewandt – Datei: output_curved.png");
     }
 
@@ -39,7 +41,6 @@ public class CurvesLUT {
             double x = i / 255.0;
             // Beispiel: einfache S-Kurve via logistischer Funktion
             double y = 1.0 / (1.0 + Math.exp(-12 * (x - 0.5)));
-           // double y = x;
             lut[i] = (int)Math.round(y * 255.0);
         }
         return lut;
