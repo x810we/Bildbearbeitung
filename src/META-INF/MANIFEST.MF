@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
-Main-Class: 
+Main-Class: Test.Lightroom_CliffordPickett_Collector
 Class-Path: kotlin-stdlib-jdk8-1.8.21.jar kotlin-stdlib-1.8.21.jar kotli
  n-stdlib-common-1.8.21.jar annotations-13.0.jar kotlin-stdlib-jdk7-1.8.
- 21.jar DYimageFX-1.0.140514.jar mysql-connector-j-9.0.0.jar
+ 21.jar aspose-psd-25.5-jdk16.jar DYimageFX-1.0.140514.jar mysql-connect
+ or-j-9.0.0.jar xmpcore-6.1.11.jar
 
